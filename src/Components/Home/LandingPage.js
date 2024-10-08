@@ -61,7 +61,7 @@ const LandingPage = () => {
                                     <img
                                         src={`http://localhost/storage/${ItemDetails.img}`} // Ensure that the correct path is used for the image
                                         alt={ItemDetails.name}
-                                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-110"
+                                        className="h-[140px] object-cover transition-transform duration-300 hover:scale-110"
                                     />
                                 </div>
                                 <div className={`h-[80px] ${currentModeStyles.cardAccent} p-3 flex flex-col justify-between`}>

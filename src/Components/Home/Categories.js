@@ -84,17 +84,17 @@ const Categories = () => {
 
                             {/* Display items if the category is expanded */}
                             {expandedCategory === category.id && (
-                                <ul className="ml-6 mt-2">
+                                <ul className="ml-6 mt-2 flex flex-col justify-between">
                                     {items
                                         .filter(item => item.category === category.name) // Filter items by category name
                                         .map(item => (
                                             <li key={item.id}
-                                                className={`flex items-center ${currentModeStyles.text} py-2 border-b border-gray-300`}>
+                                                className={`flex items-center justify-start text-right text-wrap ${currentModeStyles.text} py-2 border-b border-gray-300`}>
                                                 {/* Display item photo */}
                                                 <img
                                                     src={`http://localhost/storage/${item.img}`} // Construct the full path to the image
                                                     alt={item.name}
-                                                    className="w-16 h-auto rounded-sm"
+                                                    className="h-[70px] rounded-sm p-1"
                                                 />
                                                 {/* Adjust size as needed */}
                                                 <span>{item.name}</span> {/* Display item name */}
