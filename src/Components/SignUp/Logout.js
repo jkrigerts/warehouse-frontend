@@ -16,8 +16,8 @@ const Logout = ({ hoverClass }) => {
 
     const handleLogout = async () => {
         try {
-            await axios.get('http://localhost/sanctum/csrf-cookie', { withCredentials: true });
-            await axios.post('http://localhost/logout', {}, { withCredentials: true });
+            await axios.get('http://api.soundstud.io/sanctum/csrf-cookie', { withCredentials: true });
+            await axios.post('http://api.soundstud.io/logout', {}, { withCredentials: true });
             navigate('/login');
         } catch (error) {
             console.error('Logout failed:', error);

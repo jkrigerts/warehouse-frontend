@@ -63,7 +63,7 @@ export default function AddEvent() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost/api/users');  // Adjust API endpoint as needed
+                const response = await axios.get('http://api.soundstud.io/api/users');  // Adjust API endpoint as needed
                 setAllUsers(response.data);
             } catch (error) {
                 console.error('Error fetching users:', error);

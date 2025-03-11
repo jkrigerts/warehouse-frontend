@@ -1,5 +1,6 @@
 {
   "name": "noliktava",
+  "homepage": "https://soundstud.io/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

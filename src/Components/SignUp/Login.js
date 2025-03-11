@@ -13,7 +13,7 @@ const Login = () => {
     useEffect(() => {
         const fetchCsrfToken = async () => {
             try {
-                await axios.get('http://localhost/sanctum/csrf-cookie', { withCredentials: true });
+                await axios.get('http://api.soundstud.io/sanctum/csrf-cookie', { withCredentials: true });
                 setIsTokenReady(true); // Set token readiness to true
             } catch (err) {
                 console.error('Error fetching CSRF token:', err);
@@ -27,7 +27,7 @@ const Login = () => {
         if (!isTokenReady) return; // Prevent login if token is not ready
 
         try {
-            const response = await axios.post('http://localhost/login', {
+            const response = await axios.post('http://api.soundstud.io/login', {
                 email,
                 password
             }, { withCredentials: true });
