@@ -43,9 +43,9 @@ const Register = () => {
         }
 
         try {
-            await axios.get('http://api.soundstud.io/sanctum/csrf-cookie', { withCredentials: true });
+            await axios.get('https://api.soundstud.io/sanctum/csrf-cookie', { withCredentials: true });
 
-            const registerResponse = await axios.post('http://localhost/register', {
+            const registerResponse = await axios.post('https://api.soundstud.io/register', {
                 name,
                 email,
                 password,

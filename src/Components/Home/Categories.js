@@ -20,7 +20,7 @@ const Categories = () => {
 
     // Fetch categories and items when the component loads
     useEffect(() => {
-        axios.get('http://api.soundstud.io/api/categories')
+        axios.get('https://api.soundstud.io/api/categories')
             .then(response => {
                 setCategories(response.data);
             })

@@ -34,7 +34,7 @@ const ProductDetail = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axios.get(`http://api.soundstud.io/api/items/${id}`);
+                const response = await axios.get(`https://api.soundstud.io/api/items/${id}`);
                 console.log('Fetched product:', response.data); // Check the product data structure
                 setProduct(response.data);
             } catch (error) {

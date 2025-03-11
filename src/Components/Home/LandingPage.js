@@ -17,7 +17,7 @@ const LandingPage = () => {
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const response = await axios.get('http://api.soundstud.io/api/items'); // Fetch items from API
+                const response = await axios.get('https://api.soundstud.io/api/items'); // Fetch items from API
                 setItems(response.data); // Set fetched items
             } catch (error) {
                 console.error('Error fetching items:', error);

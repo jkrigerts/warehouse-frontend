@@ -29,7 +29,7 @@ export default function AddItem() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://localhost/api/categories');
+                const response = await axios.get('https://api.soundstud.io/api/categories');
                 setCategories(response.data);
             } catch (error) {
                 console.error('Failed to fetch categories:', error);

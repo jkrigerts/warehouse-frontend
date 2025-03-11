@@ -27,7 +27,7 @@ const Login = () => {
         if (!isTokenReady) return; // Prevent login if token is not ready
 
         try {
-            const response = await axios.post('http://api.soundstud.io/login', {
+            const response = await axios.post('https://api.soundstud.io/login', {
                 email,
                 password
             }, { withCredentials: true });
