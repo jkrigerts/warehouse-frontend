@@ -11,6 +11,9 @@ const Register = () => {
     const navigate = useNavigate();
 
     const handleRegister = async () => {
+        // Get CSRF token from meta tag
+        // const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+
         // Check for empty fields
         if (!name) {
             setError('Lūdzu ievadiet vārdu un uzvārdu'); // "Please enter your name"
@@ -43,13 +46,25 @@ const Register = () => {
         }
 
         try {
-            await axios.get('https://api.soundstud.io/sanctum/csrf-cookie', { withCredentials: true });
+            // Get CSRF cookie for Sanctum
+            await axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie', { withCredentials: true });
 
-            const registerResponse = await axios.post('https://api.soundstud.io/register', {
-                name,
-                email,
-                password,
-            }, { withCredentials: true });
+            // Register the user
+            const registerResponse = await axios.post(
+                'http://127.0.0.1:8000/register',
+                {
+                    name,
+                    email,
+                    password,
+                    password_confirmation: confirmPassword
+                },
+                {
+                    headers: {
+                        // 'X-CSRF-TOKEN': csrfToken, // Attach CSRF token to the headers
+                    },
+                    withCredentials: true // Include cookies with the request
+                }
+            );
 
             if (registerResponse.status === 204) {
                 navigate('/');
@@ -57,13 +72,17 @@ const Register = () => {
                 setError('Reģistrācija neizdevās. Lūdzu, mēģiniet vēlreiz.'); // "Registration failed. Please try again."
             }
         } catch (err) {
-            setError('Kļūda reģistrācijas laikā. Mēģiniet vēlreiz.'); // "Error during registration. Please try again."
+            console.error('Registration error:', err);
+
+            if (err.response) {
+                console.error('Status:', err.response.status);
+                console.error('Data:', err.response.data);
+                setError(`Reģistrācijas kļūda: ${err.response.status}`);
+            } else {
+                setError('Nevar izveidot savienojumu ar serveri.');
+            }
         }
     };
-
-
-
-
 
     return (
         <div className="w-full h-screen flex bg-[#1e1e1e] flex-col">

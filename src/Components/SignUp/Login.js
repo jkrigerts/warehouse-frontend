@@ -13,7 +13,7 @@ const Login = () => {
     useEffect(() => {
         const fetchCsrfToken = async () => {
             try {
-                await axios.get('http://api.soundstud.io/sanctum/csrf-cookie', { withCredentials: true });
+                await axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie', { withCredentials: true });
                 setIsTokenReady(true); // Set token readiness to true
             } catch (err) {
                 console.error('Error fetching CSRF token:', err);
@@ -27,20 +27,20 @@ const Login = () => {
         if (!isTokenReady) return; // Prevent login if token is not ready
 
         try {
-            const response = await axios.post('https://api.soundstud.io/login', {
+            const response = await axios.post('http://127.0.0.1:8000/login', {
                 email,
                 password
             }, { withCredentials: true });
 
-            // Check if response is successful
             if (response.status === 200) {
-                navigate('/'); // On success, navigate to the homepage
+                navigate('/');
             }
         } catch (err) {
-            console.error('Login error:', err); // Log error for debugging
+            console.error('Login error:', err);
             setError('Nepareizs e-pasts vai parole. Lūdzu, mēģiniet vēlreiz.');
         }
     };
+
 
     return (
         <div className="w-full h-screen flex bg-[#1e1e1e] flex-col">

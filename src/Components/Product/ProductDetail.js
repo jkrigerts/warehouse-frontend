@@ -72,7 +72,7 @@ const ProductDetail = () => {
                         <div className="md:w-1/3 w-full h-auto p-4 flex flex-col items-center">
                             {/* Adjust image URL based on the storage directory */}
                             <img
-                                src={`http://localhost/storage/${product.img}`} // Assuming the backend stores images in 'public/storage'
+                                src={`https://soundstud.io/storage/${product.img}`} // Assuming the backend stores images in 'public/storage'
                                 alt={product.name}
                                 className="w-full h-auto rounded-sm"
                             />
